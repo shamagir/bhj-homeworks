@@ -7,7 +7,8 @@ let timerId = setTimeout(function tick() {
     timer.innerHTML = currentTime;
   } else {
     alert("Вы победили в конкурсе!");
-    clearInterval(timerId);
+    clearTimeout(timerId);
+    return;
   }
   timerId = setTimeout(tick, 1000);
 }, 1000);
