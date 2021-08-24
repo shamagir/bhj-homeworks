@@ -19,7 +19,6 @@ function checkWinn(hole) {
   } else {
     fallScore += 1;
     lost.innerHTML = fallScore;
-    console.log(lost.innerHTML);
     if (fallScore === 5) {
       clearScores();
       alert('Вы вдули кроту!');
