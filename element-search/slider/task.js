@@ -29,5 +29,6 @@ function checkSliderIndex() {
 
 function toggleActive() {
   sliderItems[sliderIndex].classList.toggle('slider__item_active');
+  sliderDots[sliderIndex].classList.toggle('slider__dot_active');
 }
 
