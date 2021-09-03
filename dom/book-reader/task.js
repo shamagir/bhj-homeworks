@@ -18,8 +18,7 @@ bookControls.forEach(function (item) {
 });
 
 function toggleActiveElement(event) {
-  let element = event.target
-  let activeElementName = `${element.classList[0]}_active`,
+  let activeElementName = `${event.target.classList[0]}_active`,
     currentActiveElement = event.currentTarget.querySelector(
       `.${activeElementName}`
     );
@@ -30,9 +29,9 @@ function toggleActiveElement(event) {
 
   removeBookClass(removeClass);
 
-  element.classList.toggle(activeElementName);
+  event.target.classList.toggle(activeElementName);
 
-  let addClass = getStyleProperty(element);
+  let addClass = getStyleProperty(event.target);
 
   addBookClass(addClass);
 }
