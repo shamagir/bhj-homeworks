@@ -25,15 +25,15 @@ function toggleActiveElement(element) {
 
   currentActiveElement.classList.toggle(activeElementName);
 
-  let removeClassProperty = getStyleProperty(currentActiveElement);
+  let removeClass = getStyleProperty(currentActiveElement);
 
-  removeBookClass(removeClassProperty);
+  removeBookClass(removeClass);
 
   element.classList.toggle(activeElementName);
 
-  let addClassProperty = getStyleProperty(element);
+  let addClass = getStyleProperty(element);
 
-  addBookClass(addClassProperty);
+  addBookClass(addClass);
 }
 
 function getStyleProperty(element) {
@@ -42,24 +42,16 @@ function getStyleProperty(element) {
 
     property['key'] = Object.keys(properties)[0],
     property['value'] = Object.values(properties)[0];
-  return property;
+
+    let toggleClass = (property['key'] !== undefined) ? `book_${propertyKeys[property['key']]}-${property['value']}` : false;
+  return toggleClass;
 }
 
-function removeBookClass(property) {
-  if (property['key'] !== undefined) {
-    let removingClass = `book_${propertyKeys[property['key']]}-${
-      property['value']
-    }`;
+function removeBookClass(removingClass) {
     book.classList.remove(removingClass);
-  }
 }
 
-function addBookClass(property) {
-  if (property['key'] !== undefined) {
-    let addingClass = `book_${propertyKeys[property['key']]}-${
-      property['value']
-    }`;
+function addBookClass(addingClass) {
     book.classList.add(addingClass);
-  }
 }
 
