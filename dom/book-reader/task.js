@@ -40,8 +40,8 @@ function getStyleProperty(element) {
   let properties = JSON.parse(JSON.stringify(element.dataset)),
     property = [];
 
-  (property['key'] = Object.keys(properties)[0]),
-    (property['value'] = Object.values(properties)[0]);
+    property['key'] = Object.keys(properties)[0],
+    property['value'] = Object.values(properties)[0];
   return property;
 }
 
