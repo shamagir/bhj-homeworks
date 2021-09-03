@@ -43,15 +43,19 @@ function getStyleProperty(element) {
     property['key'] = Object.keys(properties)[0],
     property['value'] = Object.values(properties)[0];
 
-    let toggleClass = (property['key'] !== undefined) ? `book_${propertyKeys[property['key']]}-${property['value']}` : false;
+    let toggleClass = (property['key'] !== undefined) ? `book_${propertyKeys[property['key']]}-${property['value']}` : '';
   return toggleClass;
 }
 
 function removeBookClass(removingClass) {
+  if(removingClass !== '') {
     book.classList.remove(removingClass);
+  }
 }
 
 function addBookClass(addingClass) {
+  if(addingClass !== '') {
     book.classList.add(addingClass);
+  }
 }
 
