@@ -12,14 +12,15 @@ bookControls.forEach(function (item) {
   item.addEventListener('click', (event) => {
     event.preventDefault();
     if (event.target !== event.currentTarget) {
-      toggleActiveElement(event.target);
+      toggleActiveElement(event);
     }
   });
 });
 
-function toggleActiveElement(element) {
+function toggleActiveElement(event) {
+  let element = event.target
   let activeElementName = `${element.classList[0]}_active`,
-    currentActiveElement = element.parentElement.querySelector(
+    currentActiveElement = event.currentTarget.querySelector(
       `.${activeElementName}`
     );
 
