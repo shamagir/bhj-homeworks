@@ -34,8 +34,7 @@ function robotMessage() {
 	let answerIndex = Math.floor( Math.random() * responses.length );
 	let answerText  = responses[ answerIndex ];
 	let now         = new Date();
-	addMessage(answerText);
-	
+	addMessage(answerText);	
 }
 
 function addMessage(textMessage, typeClass = '') {
