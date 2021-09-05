@@ -1,7 +1,7 @@
 'use strict';
 
-const chatWidget    = document.querySelector( '.chat-widget' ); 
 const chatActive    = 'chat-widget_active';
+const chatWidget    = document.querySelector( '.chat-widget' ); 
 const inputField    = document.querySelector( '.chat-widget__input' );
 const container     = document.querySelector( '.chat-widget__messages-container' );
 const messages      = document.querySelector( '.chat-widget__messages' );
@@ -10,7 +10,7 @@ const chatActivator = document.querySelector( '.chat-widget__side' );
 let flag;
 let interval;
 let intervalTime = 4000;
-let date         = new Date(); 
+let now          = new Date(); 
 let responses    = [
 	'По пятницам не подаём!', 
 	'От дохлого осла уши!',
@@ -37,7 +37,7 @@ function robotMessage() {
 
 	messages.innerHTML += `
 		<div class="message">
-			<div class="message__time">${ date.getHours() }:${ date.getMinutes() }</div>
+			<div class="message__time">${ ( '0' + now.getHours() ).slice( -2 ) }:${( '0' + now.getMinutes() ).slice( -2 ) }</div>
 				<div class="message__text">
 					${ answerText }
 				</div>
@@ -54,7 +54,7 @@ const chatKeydown = ( event ) => {
 		if( inputField.value.length > 0 && flag === 1 ) {
 			messages.innerHTML += `
 				<div class="message message_client">
-					<div class="message__time">${ date.getHours()}:${date.getMinutes() }</div>
+					<div class="message__time">${ ( '0' + now.getHours() ).slice( -2 ) }:${( '0' + now.getMinutes() ).slice( -2 ) }</div>
 						<div class="message__text">
 							${ inputField.value }
 						</div>
