@@ -19,7 +19,7 @@ let responses    = [
 ];
 
 chatActivator.addEventListener( 'click', () => {
-	chatWidget.classList.add( chatActive )
+	chatWidget.classList.add( chatActive );
 	interval = setInterval(() => robotMessage(), intervalTime); 
 });
 
