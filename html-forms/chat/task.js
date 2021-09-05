@@ -34,11 +34,17 @@ function robotMessage() {
 	let answerIndex = Math.floor( Math.random() * responses.length );
 	let answerText  = responses[ answerIndex ];
 	let now         = new Date();
+	addMessage('message_client');
+	
+}
+
+function addMessage(typeClass = '') {
+	let now = new Date();
 	messages.innerHTML += `
-		<div class="message">
+		<div class="message `${ typeClass }`">
 			<div class="message__time">${ ( '0' + now.getHours() ).slice( -2 ) }:${( '0' + now.getMinutes() ).slice( -2 ) }</div>
 				<div class="message__text">
-					${ answerText }
+					${ inputField.value }
 				</div>
 			</div>
 		</div>
@@ -51,19 +57,9 @@ const chatKeydown = ( event ) => {
 	if( event.key === 'Enter' ){
 		flag = checkWhitespace();
 		if( inputField.value.length > 0 && flag === 1 ) {
-			let now = new Date();
-			messages.innerHTML += `
-				<div class="message message_client">
-					<div class="message__time">${ ( '0' + now.getHours() ).slice( -2 ) }:${( '0' + now.getMinutes() ).slice( -2 ) }</div>
-						<div class="message__text">
-							${ inputField.value }
-						</div>
-					</div>
-				</div>
-			`;
+			addMessage('message_client');
 			inputField.value = '';
 			robotMessage();
-			container.scrollTop = container.scrollHeight;
 			interval = setInterval(() => robotMessage(), intervalTime );
 		}
 	}
