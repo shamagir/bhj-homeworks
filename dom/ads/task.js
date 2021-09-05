@@ -1,11 +1,11 @@
 'use strict';
 
-let aciveClass = 'rotator__case_active',
-  cards = Array.from(document.querySelectorAll('.card')),
-  rotatorCases,
-  activeIndex,
-  activeColor,
-  activeSpeed;
+let aciveClass = 'rotator__case_active';
+let cards = Array.from(document.querySelectorAll('.card'));
+let rotatorCases;
+let activeIndex;
+let activeColor;
+let activeSpeed;
 
 let timerId = setTimeout(function tick() {
   cards.forEach(function(item) {
