@@ -9,7 +9,7 @@ const chatActivator = document.querySelector( '.chat-widget__side' );
 
 let flag;
 let interval;
-let intervalTime = 4000;
+let intervalTime = 30000;
 let now          = new Date(); 
 let responses    = [
 	'По пятницам не подаём!', 
