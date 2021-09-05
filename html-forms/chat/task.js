@@ -9,8 +9,7 @@ const chatActivator = document.querySelector( '.chat-widget__side' );
 
 let flag;
 let interval;
-let intervalTime = 30000;
-let now          = new Date(); 
+let intervalTime = 30000; 
 let responses    = [
 	'По пятницам не подаём!', 
 	'От дохлого осла уши!',
@@ -34,7 +33,7 @@ function checkWhitespace() {
 function robotMessage() {
 	let answerIndex = Math.floor( Math.random() * responses.length );
 	let answerText  = responses[ answerIndex ];
-
+	let now         = new Date();
 	messages.innerHTML += `
 		<div class="message">
 			<div class="message__time">${ ( '0' + now.getHours() ).slice( -2 ) }:${( '0' + now.getMinutes() ).slice( -2 ) }</div>
@@ -52,6 +51,7 @@ const chatKeydown = ( event ) => {
 	if( event.key === 'Enter' ){
 		flag = checkWhitespace();
 		if( inputField.value.length > 0 && flag === 1 ) {
+			let now = new Date();
 			messages.innerHTML += `
 				<div class="message message_client">
 					<div class="message__time">${ ( '0' + now.getHours() ).slice( -2 ) }:${( '0' + now.getMinutes() ).slice( -2 ) }</div>
