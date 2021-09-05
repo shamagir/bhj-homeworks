@@ -56,7 +56,7 @@ const chatKeydown = ( event ) => {
 	if( event.key === 'Enter' ){
 		flag = checkWhitespace();
 		if( inputField.value.length > 0 && flag === 1 ) {
-			addMessage(inputField.value, 'message_client');
+			addMessage( inputField.value, 'message_client' );
 			inputField.value = '';
 			robotMessage();
 			interval = setInterval(() => robotMessage(), intervalTime );
