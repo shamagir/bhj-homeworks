@@ -25,7 +25,7 @@ chatActivator.addEventListener( 'click', () => {
 
 function checkWhitespace() {
 	for( let i=0; i<inputField.value.length; i++ ){
-		flag = ( inputField.value.charAt(i) !== ' ' ) ? 1 : 0; 
+		flag = ( inputField.value.charAt( i ) !== ' ' ) ? 1 : 0; 
 	}
 	return flag;
 }
