@@ -1,6 +1,9 @@
 body {
   font-family: Arial;
 }
+.unactive {
+  display: none;
+}
 .cart__products {
   display: flex;
   justify-content: center;
