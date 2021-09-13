@@ -37,16 +37,19 @@ function addToCart() {
 	let productImage = parent.querySelector( productImageClass ).src;
 	let productValue = parent.querySelector( productValueClass ).innerText;
 
-	carts.insertAdjacentHTML( 'beforeEnd', template );
+	if( productValue > 0 ) {
 
-	let elements = Array.from( document.querySelectorAll( cartClass )); 
-	let element  = elements[ elements.length - 1 ];
+		carts.insertAdjacentHTML( 'beforeEnd', template );
 
-	button.classList.add( 'unactive' );
+		let elements = Array.from( document.querySelectorAll( cartClass )); 
+		let element  = elements[ elements.length - 1 ];
 
-	 element.dataset.id = productId;
-	 element.querySelector( cartImageClass ).src = productImage;
-	 element.querySelector( cartCount ).innerText = productValue;
+		button.classList.add( 'unactive' );
+
+		element.dataset.id = productId;
+		element.querySelector( cartImageClass ).src = productImage;
+		element.querySelector( cartCount ).innerText = productValue;
+	}
 	 checkCartElements();
 }
 
@@ -74,7 +77,7 @@ function checkCartById( productId ) {
 		cartItem.querySelector( cartCount ).innerText = value;
 	}
 
-	if( parseInt( value) === 0 ) {
+	if( parseInt( value ) === 0 && cartItem ) {
 		product.querySelector( productAddClass ).classList.remove( 'unactive' )
 		cartItem.remove();
 		checkCartElements();	
