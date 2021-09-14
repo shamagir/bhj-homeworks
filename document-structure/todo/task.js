@@ -18,8 +18,8 @@ if( localStorage.getItem( 'tasks' )) {
 
 form.addEventListener( 'submit', ( event ) => event.preventDefault());
 input.onchange = ( event ) => {
-		event.preventDefault();
-		if( input.value.trim() !== '' ) {
+	event.preventDefault();
+	if( input.value.trim() !== '' ) {
 		addElement( input.value );
 		addToLocalStorage( input.value );
 		input.value = '';
