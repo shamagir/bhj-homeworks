@@ -3,7 +3,6 @@
 const form   = document.querySelector( '#tasks__form' );
 const input  = document.querySelector( '#task__input' );
 const list   = document.querySelector( '#tasks__list' );
-let tasks    = [];
 let template = `
 	<div class="task">
  		<div class="task__title">
@@ -12,24 +11,19 @@ let template = `
     </div>`;
 
 if( localStorage.getItem( 'tasks' )) {
-	let collection = localStorage.getItem( 'tasks' ).split( ',' );
-
-	tasks = collection;
-	collection.forEach( function( el ) {
-		addElement( el );
+	JSON.parse( localStorage.getItem( 'tasks' )).forEach( ( element ) => {
+		addElement( element );
 	});
-} else {
-	localStorage.setItem( 'tasks', tasks );
-}
+} 
 
-form.addEventListener( 'submit', () => event.preventDefault());
-input.onchange = function() {
-	event.preventDefault();
-	addElement( input.value );
-	tasks.push( input.value );
-	JSON.stringify( tasks );
-	localStorage.setItem( 'tasks', tasks );
-	input.value = '';
+form.addEventListener( 'submit', ( event ) => event.preventDefault());
+input.onchange = ( event ) => {
+		event.preventDefault();
+		if( input.value.trim() !== '' ) {
+		addElement( input.value );
+		addToLocalStorage( input.value );
+		input.value = '';
+	}
 }
 
 function addElement( text ) {
@@ -46,15 +40,28 @@ function addElement( text ) {
 
 function addListner( element ) {
 	let deleteButton = element.querySelector( '.task__remove' );
-	let text  = element.querySelector( '.task__title' ).innerText;
-	deleteButton.addEventListener( 'click', () => {
-		let index = tasks.indexOf( text );
-
-		tasks.splice( index, 1 );
-		JSON.stringify( tasks );
-		localStorage.setItem( 'tasks', tasks );
+	let text = element.querySelector( '.task__title' ).innerText;
+	deleteButton.addEventListener( 'click', ( event ) => {
+		removeFromLocalStorage( text );
 		element.remove()
 	});
 }
 
+function addToLocalStorage( text ) {
+	if( localStorage.getItem( 'tasks' )){
+		let collection = JSON.parse( localStorage.getItem( 'tasks' ));
+		collection.push( text );
+		localStorage.setItem( 'tasks', JSON.stringify( collection ) );
+	} else {
+		localStorage.setItem( 'tasks', JSON.stringify([ text ]) );
+	}
+}
 
+function removeFromLocalStorage( text ) {
+	if( localStorage.getItem( 'tasks' )){
+		let collection = JSON.parse( localStorage.getItem( 'tasks' ));
+		let elementIndex = collection.indexOf( text );
+		collection.splice( elementIndex, 1 );
+		localStorage.setItem( 'tasks', JSON.stringify( collection ) );
+	}
+}

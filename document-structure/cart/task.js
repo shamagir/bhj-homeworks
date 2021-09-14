@@ -37,7 +37,7 @@ function addToCart() {
 	let productImage = parent.querySelector( productImageClass ).src;
 	let productValue = parent.querySelector( productValueClass ).innerText;
 
-	if( productValue > 0 ) {
+	if( productValue >= 1 ) {
 
 		carts.insertAdjacentHTML( 'beforeEnd', template );
 
@@ -80,6 +80,7 @@ function checkCartById( productId ) {
 	if( parseInt( value ) === 0 && cartItem ) {
 		product.querySelector( productAddClass ).classList.remove( 'unactive' )
 		cartItem.remove();
+		product.querySelector( productValueClass ).innerText = 1;
 		checkCartElements();	
 	}
 }
